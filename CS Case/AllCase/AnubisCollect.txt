@@ -1,0 +1,154 @@
+//基于SipCFG规范编写
+
+//Anubis collection package
+//阿努比斯收藏包
+
+$CaseName=阿努比斯收藏包;
+
+//Set a probability
+//base https://www.csgo.com.cn/news/gamebroad/20170911/206155.shtml
+
+// 1/100000
+
+//OpenCase Num
+
+$StageANum=5;
+$StageBNum=2;
+$StageCNum=1;
+
+$Level_S=0;               //及其罕见
+$Level_A=27;              //隐秘
+$Level_B=160;              //保密
+$Level_C=826;              //受限
+$Level_D=4154;              //军规
+$Level_E=20128;                      //工业
+$Level_F=100000;                      //消费
+
+//Weapon
+//abr单位 1/10000000
+
+//S LEVEL -----------------------------------------------------
+$wp_s_max=0;
+
+//A LEVEL -----------------------------------------------------
+$wp_a_max=1;
+
+$wp_a_1=M4A4 | 荷鲁斯之眼;
+$wp_a_1_st=2;
+$wp_a_1_abr_min=0;
+$wp_a_1_abr_max=7000000;
+
+
+//B LEVEL ----------------------------------------------------
+$wp_b_max=2;
+
+$wp_b_1=P250 | 阿佩普之咒;
+$wp_b_1_st=2;
+$wp_b_1_abr_min=0;
+$wp_b_1_abr_max=10000000;
+
+$wp_b_2=法玛斯 | 奈芙蒂斯之河;
+$wp_b_2_st=2;
+$wp_b_2_abr_min=0;
+$wp_b_2_abr_max=7000000;
+
+
+//C LEVEL ----------------------------------------------------
+$wp_c_max=3;
+
+$wp_c_1=P90 | 疾袭圣甲虫;
+$wp_c_1_st=2;
+$wp_c_1_abr_min=0;
+$wp_c_1_abr_max=10000000;
+
+$wp_c_2=新星 | 索贝克之噬;
+$wp_c_2_st=2;
+$wp_c_2_abr_min=0;
+$wp_c_2_abr_max=10000000;
+
+$wp_c_3=格洛克 18 型 | 拉美西斯之触;
+$wp_c_3_st=2;
+$wp_c_3_abr_min=0;
+$wp_c_3_abr_max=10000000;
+
+
+//D LEVEL ----------------------------------------------------
+$wp_d_max=4;
+
+$wp_d_1=AK-47 | 钢铁三角洲;
+$wp_d_1_st=2;
+$wp_d_1_abr_min=0;
+$wp_d_1_abr_max=7300000;
+
+$wp_d_2=AWP | 尼罗河沃土;
+$wp_d_2_st=2;
+$wp_d_2_abr_min=0;
+$wp_d_2_abr_max=7500000;
+
+$wp_d_3=MAG-7 | 鎏铜;
+$wp_d_3_st=2;
+$wp_d_3_abr_min=0;
+$wp_d_3_abr_max=10000000;
+
+$wp_d_4=Tec-9 | 腐朽木乃伊;
+$wp_d_4_st=2;
+$wp_d_4_abr_min=0;
+$wp_d_4_abr_max=10000000;
+
+
+//E LEVEL ----------------------------------------------------
+$wp_e_max=4;
+
+$wp_e_1=M4A1 消音型 | 泥斑迷彩;
+$wp_e_1_st=2;
+$wp_e_1_abr_min=0;
+$wp_e_1_abr_max=7300000;
+
+$wp_e_2=MAC-10 | 鸣沙;
+$wp_e_2_st=2;
+$wp_e_2_abr_min=0;
+$wp_e_2_abr_max=8000000;
+
+$wp_e_3=SSG 08 | 碧蓝雕文;
+$wp_e_3_st=2;
+$wp_e_3_abr_min=0;
+$wp_e_3_abr_max=9900000;
+
+$wp_e_4=USP 消音版 | 沙漠战术;
+$wp_e_4_st=2;
+$wp_e_4_abr_min=0;
+$wp_e_4_abr_max=10000000;
+
+
+//F LEVEL ----------------------------------------------------
+$wp_f_max=5;
+
+$wp_f_1=AUG | 蛇窟;
+$wp_f_1_st=2;
+$wp_f_1_abr_min=0;
+$wp_f_1_abr_max=5500000;
+
+$wp_f_2=M249 | 淹没;
+$wp_f_2_st=2;
+$wp_f_2_abr_min=0;
+$wp_f_2_abr_max=8000000;
+
+$wp_f_3=MP7 | 赤地;
+$wp_f_3_st=2;
+$wp_f_3_abr_min=0;
+$wp_f_3_abr_max=10000000;
+
+$wp_f_4=R8 左轮手枪 | 镶嵌装饰;
+$wp_f_4_st=2;
+$wp_f_4_abr_min=0;
+$wp_f_4_abr_max=7600000;
+
+$wp_f_5=XM1014 | 象形文字;
+$wp_f_5_st=2;
+$wp_f_5_abr_min=0;
+$wp_f_5_abr_max=10000000;
+
+//END
+//CASE
+
+

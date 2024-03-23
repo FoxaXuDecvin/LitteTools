@@ -1,0 +1,153 @@
+//基于SipCFG规范编写
+
+//Recoil Case
+//反冲
+
+$CaseName=反冲武器箱(No StatTrack);
+
+//Set a probability
+//base https://www.csgo.com.cn/news/gamebroad/20170911/206155.shtml
+
+// 1/100000
+
+//OpenCase Num
+
+$StageANum=5;
+$StageBNum=2;
+$StageCNum=1;
+
+$Level_S=256;               //及其罕见
+$Level_A=895;              //隐秘
+$Level_B=4092;              //保密
+$Level_C=20077;              //受限
+$Level_D=100000;              //军规
+$Level_E=0;                      //工业
+$Level_F=0;                      //消费
+
+//Weapon
+//abr单位 1/10000000
+
+//S LEVEL -----------------------------------------------------
+$wp_s_max=3;
+
+$wp_s_1=专业手套（★） | 一线特工;
+$wp_s_1_st=0;
+$wp_s_1_abr_min=600000;
+$wp_s_1_abr_max=7900000;
+
+
+$wp_s_2=专业手套（★） | 渐变大理石;
+$wp_s_2_st=0;
+$wp_s_2_abr_min=600000;
+$wp_s_2_abr_max=8000000;
+
+
+$wp_s_3=专业手套（★） | 老虎精英;
+$wp_s_3_st=0;
+$wp_s_3_abr_min=600000;
+$wp_s_3_abr_max=7900000;
+
+//A LEVEL -----------------------------------------------------
+$wp_a_max=2;
+
+$wp_a_1=AWP | 迷人眼;
+$wp_a_1_st=0;
+$wp_a_1_abr_min=0;
+$wp_a_1_abr_max=7000000;
+
+$wp_a_2=USP 消音版 | 印花集;
+$wp_a_2_st=0;
+$wp_a_2_abr_min=0;
+$wp_a_2_abr_max=8500000;
+
+
+//B LEVEL ----------------------------------------------------
+$wp_b_max=3;
+
+$wp_b_1=AK-47 | 可燃冰;
+$wp_b_1_st=0;
+$wp_b_1_abr_min=0;
+$wp_b_1_abr_max=7700000;
+
+$wp_b_2=P250 | 迷人幻象;
+$wp_b_2_st=0;
+$wp_b_2_abr_min=0;
+$wp_b_2_abr_max=7000000;
+
+$wp_b_3=截短霰弹枪 | 么么;
+$wp_b_3_st=0;
+$wp_b_3_abr_min=0;
+$wp_b_3_abr_max=10000000;
+
+
+//C LEVEL ----------------------------------------------------
+$wp_c_max=5;
+
+$wp_c_1=M249 | 闹市区;
+$wp_c_1_st=0;
+$wp_c_1_abr_min=0;
+$wp_c_1_abr_max=6500000;
+
+$wp_c_2=P90 | 给爷冲;
+$wp_c_2_st=0;
+$wp_c_2_abr_min=0;
+$wp_c_2_abr_max=7000000;
+
+$wp_c_3=R8 左轮手枪 | 疯狂老八;
+$wp_c_3_st=0;
+$wp_c_3_abr_min=0;
+$wp_c_3_abr_max=10000000;
+
+$wp_c_4=SG 553 | 青龙;
+$wp_c_4_st=0;
+$wp_c_4_abr_min=0;
+$wp_c_4_abr_max=7000000;
+
+$wp_c_5=双持贝瑞塔 | 食人花;
+$wp_c_5_st=0;
+$wp_c_5_abr_min=0;
+$wp_c_5_abr_max=10000000;
+
+
+//D LEVEL ----------------------------------------------------
+$wp_d_max=7;
+
+$wp_d_1=M4A4 | 透明弹匣;
+$wp_d_1_st=0;
+$wp_d_1_abr_min=0;
+$wp_d_1_abr_max=10000000;
+
+$wp_d_2=MAC-10 | 萌猴迷彩;
+$wp_d_2_st=0;
+$wp_d_2_abr_min=0;
+$wp_d_2_abr_max=10000000;
+
+$wp_d_3=UMP-45 | 路障;
+$wp_d_3_st=0;
+$wp_d_3_abr_min=0;
+$wp_d_3_abr_max=10000000;
+
+$wp_d_4=内格夫 | 丢把枪;
+$wp_d_4_st=0;
+$wp_d_4_abr_min=0;
+$wp_d_4_abr_max=10000000;
+
+$wp_d_5=加利尔 AR | 毁灭者;
+$wp_d_5_st=0;
+$wp_d_5_abr_min=0;
+$wp_d_5_abr_max=7000000;
+
+$wp_d_6=格洛克 18 型 | 冬季战术;
+$wp_d_6_st=0;
+$wp_d_6_abr_min=0;
+$wp_d_6_abr_max=10000000;
+
+$wp_d_7=法玛斯 | 喵喵36;
+$wp_d_7_st=0;
+$wp_d_7_abr_min=0;
+$wp_d_7_abr_max=10000000;
+
+//END
+//CASE
+
+
