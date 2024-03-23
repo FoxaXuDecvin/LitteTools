@@ -1,0 +1,153 @@
+//基于SipCFG规范编写
+
+//KiloWatt Case
+//千瓦
+
+$CaseName=千瓦武器箱;
+
+//Set a probability
+//base https://www.csgo.com.cn/news/gamebroad/20170911/206155.shtml
+
+// 1/100000
+
+//OpenCase Num
+
+$StageANum=5;
+$StageBNum=2;
+$StageCNum=1;
+
+$Level_S=256;               //及其罕见
+$Level_A=895;              //隐秘
+$Level_B=4092;              //保密
+$Level_C=20077;              //受限
+$Level_D=100000;              //军规
+$Level_E=0;                      //工业
+$Level_F=0;                      //消费
+
+//Weapon
+//abr单位 1/10000000
+
+//S LEVEL -----------------------------------------------------
+$wp_s_max=3;
+
+$wp_s_1=廓尔喀刀（★）;
+$wp_s_1_st=1;
+$wp_s_1_abr_min=0;
+$wp_s_1_abr_max=10000000;
+
+
+$wp_s_2=廓尔喀刀（★） | 森林 DDPAT;
+$wp_s_2_st=0;
+$wp_s_2_abr_min=0;
+$wp_s_2_abr_max=10000000;
+
+
+$wp_s_3=廓尔喀刀（★） | 渐变之色;
+$wp_s_3_st=1;
+$wp_s_3_abr_min=0;
+$wp_s_3_abr_max=10000000;
+
+//A LEVEL -----------------------------------------------------
+$wp_a_max=2;
+
+$wp_a_1=AK-47 | 传承;
+$wp_a_1_st=1;
+$wp_a_1_abr_min=0;
+$wp_a_1_abr_max=8000000;
+
+$wp_a_2=AWP | 镀铬大炮;
+$wp_a_2_st=1;
+$wp_a_2_abr_min=0;
+$wp_a_2_abr_max=10000000;
+
+
+//B LEVEL ----------------------------------------------------
+$wp_b_max=3;
+
+$wp_b_1=M4A1 消音型 | 黑莲花;
+$wp_b_1_st=1;
+$wp_b_1_abr_min=0;
+$wp_b_1_abr_max=7000000;
+
+$wp_b_2=USP 消音版 | 破颚者;
+$wp_b_2_st=1;
+$wp_b_2_abr_min=0;
+$wp_b_2_abr_max=10000000;
+
+$wp_b_3=宙斯 X27 电击枪 | 奥林匹斯;
+$wp_b_3_st=1;
+$wp_b_3_abr_min=0;
+$wp_b_3_abr_max=6700000;
+
+
+//C LEVEL ----------------------------------------------------
+$wp_c_max=5;
+
+$wp_c_1=FN57 | 混合体;
+$wp_c_1_st=1;
+$wp_c_1_abr_min=0;
+$wp_c_1_abr_max=10000000;
+
+$wp_c_2=M4A4 | 蚀刻领主;
+$wp_c_2_st=1;
+$wp_c_2_abr_min=0;
+$wp_c_2_abr_max=10000000;
+
+$wp_c_3=MP7 | 笑一个;
+$wp_c_3_st=1;
+$wp_c_3_abr_min=0;
+$wp_c_3_abr_max=10000000;
+
+$wp_c_4=截短霰弹枪 | 模拟输入;
+$wp_c_4_st=1;
+$wp_c_4_abr_min=0;
+$wp_c_4_abr_max=6200000;
+
+$wp_c_5=格洛克 18 型 | 崩络克-18;
+$wp_c_5_st=1;
+$wp_c_5_abr_min=0;
+$wp_c_5_abr_max=6700000;
+
+
+//D LEVEL ----------------------------------------------------
+$wp_d_max=7;
+
+$wp_d_1=MAC-10 | 灯箱;
+$wp_d_1_st=1;
+$wp_d_1_abr_min=0;
+$wp_d_1_abr_max=10000000;
+
+$wp_d_2=SSG 08 | 灾难;
+$wp_d_2_st=1;
+$wp_d_2_abr_min=0;
+$wp_d_2_abr_max=10000000;
+
+$wp_d_3=Tec-9 | 渣渣;
+$wp_d_3_st=1;
+$wp_d_3_abr_min=0;
+$wp_d_3_abr_max=9000000;
+
+$wp_d_4=UMP-45 | 机动化;
+$wp_d_4_st=1;
+$wp_d_4_abr_min=0;
+$wp_d_4_abr_max=8000000;
+
+$wp_d_5=XM1014 | 刺青;
+$wp_d_5_st=1;
+$wp_d_5_abr_min=0;
+$wp_d_5_abr_max=8000000;
+
+$wp_d_6=双持贝瑞塔 | 藏身处;
+$wp_d_6_st=1;
+$wp_d_6_abr_min=0;
+$wp_d_6_abr_max=7000000;
+
+$wp_d_7=新星 | 黑暗徽记;
+$wp_d_7_st=1;
+$wp_d_7_abr_min=0;
+$wp_d_7_abr_max=7000000;
+
+//END
+//CASE
+
+
