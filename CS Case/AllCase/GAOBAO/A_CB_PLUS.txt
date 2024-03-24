@@ -1,0 +1,134 @@
+//基于SipCFG规范编写
+
+//cobblestone-souvenir-package
+//古堡激战纪念包;
+
+$CaseName=古堡激战纪念包(All) (高爆率版);
+
+//Set a probability
+//base https://www.csgo.com.cn/news/gamebroad/20170911/206155.shtml
+
+// 1/100000
+
+//OpenCase Num
+
+$StageANum=5;
+$StageBNum=2;
+$StageCNum=1;
+
+$Level_S=0;               //及其罕见
+$Level_A=40000;              //隐秘
+$Level_B=60000;              //保密
+$Level_C=80000;              //受限
+$Level_D=100000;              //军规
+$Level_E=0;                      //工业
+$Level_F=0;                      //消费
+
+//Weapon
+//abr单位 1/10000000
+
+//S LEVEL -----------------------------------------------------
+$wp_s_max=0;
+
+//A LEVEL -----------------------------------------------------
+$wp_a_max=1;
+
+$wp_a_1=AWP | 巨龙传说;
+$wp_a_1_st=2;
+$wp_a_1_abr_min=0;
+$wp_a_1_abr_max=7000000;
+
+
+//B LEVEL ----------------------------------------------------
+$wp_b_max=1;
+
+$wp_b_1=M4A1 消音版 | 骑士;
+$wp_b_1_st=2;
+$wp_b_1_abr_min=0;
+$wp_b_1_abr_max=1000000;
+
+
+//C LEVEL ----------------------------------------------------
+$wp_c_max=2;
+
+$wp_c_1=沙漠之鹰 | 手上加农炮;
+$wp_c_1_st=2;
+$wp_c_1_abr_min=0;
+$wp_c_1_abr_max=7000000;
+
+$wp_c_2=CZ75 自动手枪 | 复古圣杯;
+$wp_c_2_st=2;
+$wp_c_2_abr_min=0;
+$wp_c_2_abr_max=1000000;
+
+
+//D LEVEL ----------------------------------------------------
+$wp_d_max=2;
+
+$wp_d_1=P2000 | 坚固链甲;
+$wp_d_1_st=2;
+$wp_d_1_abr_min=0;
+$wp_d_1_abr_max=2200000;
+
+$wp_d_2=MP9 | 黑暗时代;
+$wp_d_2_st=2;
+$wp_d_2_abr_min=0;
+$wp_d_2_abr_max=2200000;
+
+
+//E LEVEL ----------------------------------------------------
+$wp_e_max=4;
+
+$wp_e_1=USP 消音版 | 宝蓝之色;
+$wp_e_1_st=2;
+$wp_e_1_abr_min=600000;
+$wp_e_1_abr_max=8000000;
+
+$wp_e_2=新星 | 绿苹果;
+$wp_e_2_st=2;
+$wp_e_2_abr_min=0;
+$wp_e_2_abr_max=3000000;
+
+$wp_e_3=截短霰弹枪 | 外表生锈;
+$wp_e_3_st=2;
+$wp_e_3_abr_min=0;
+$wp_e_3_abr_max=8000000;
+
+$wp_e_4=MAG-7 | 银质;
+$wp_e_4_st=2;
+$wp_e_4_abr_min=0;
+$wp_e_4_abr_max=800000;
+
+
+//F LEVEL ----------------------------------------------------
+$wp_f_max=5;
+
+$wp_f_1=MAC-10 | 紫青之色;
+$wp_f_1_st=2;
+$wp_f_1_abr_min=600000;
+$wp_f_1_abr_max=8000000;
+
+$wp_f_2=P90 | 暴风呼啸;
+$wp_f_2_st=2;
+$wp_f_2_abr_min=600000;
+$wp_f_2_abr_max=8000000;
+
+$wp_f_3=UMP-45 | 紫青之色;
+$wp_f_3_st=2;
+$wp_f_3_abr_min=600000;
+$wp_f_3_abr_max=8000000;
+
+$wp_f_4=双持贝瑞塔 | 蔷薇;
+$wp_f_4_st=2;
+$wp_f_4_abr_min=0;
+$wp_f_4_abr_max=2200000;
+
+$wp_f_5=SCAR-20 | 暴风呼啸;
+$wp_f_5_st=2;
+$wp_f_5_abr_min=600000;
+$wp_f_5_abr_max=8000000;
+
+//END
+//CASE
+
+

@@ -42,6 +42,31 @@ string statTrackID;
 
 bool fastopen = false;
 
+void ColorRefresh() {
+	if (openapi_gtLv == "s") {
+		system("color 67");
+	}
+	if (openapi_gtLv == "a") {
+		system("color 47");
+	}
+	if (openapi_gtLv == "b") {
+		system("color c7");
+	}
+	if (openapi_gtLv == "c") {
+		system("color d7");
+	}
+	if (openapi_gtLv == "d") {
+		system("color 17");
+	}
+	if (openapi_gtLv == "e") {
+		system("color 97");
+	}
+	if (openapi_gtLv == "f") {
+		system("color f0");
+	}
+	return;
+}
+
 string GetWeaponRand(string gt_level) {
 	openapi_gtLv = gt_level;
 	wpls_max = atoi(_load_sipcfg(userloadprofile, "wp_" + gt_level + "_max").c_str());
@@ -99,6 +124,10 @@ string GetWeaponRand(string gt_level) {
 	openapi_abr_full[0] = '0';
 	openapi_abr_full[1] = '.';
 
+	if (gt_level == "s") {
+		wpls_rgname = " ?????????????????";
+	}
+
 	if (openapi_st == 1) {
 		return wpls_rgname + "   [StatTrack]";
 	}
@@ -116,6 +145,8 @@ string GetWeaponRand(string gt_level) {
 
 void randGetWeapList() {
 	cs_randseed = _get_random(1, 100000);
+
+	ColorRefresh();
 
 	if (lv_s >= cs_randseed) {
 		_prtoutmsg("[及其罕见]" + GetWeaponRand("s"));
@@ -213,23 +244,24 @@ ReturnMainUI:
 	cleanConsole();
 
 	_prtoutmsg("正在打开 :  " + casename);
+	openapi_gtLv = "null";
 
 	for (int autolist = 0; autolist != sgAN; autolist++) {
 		randGetWeapList();
 	}
 	for (int autolist = 0; autolist != sgBN; autolist++) {
 		randGetWeapList();
-		Sleep(100);
 	}
 	for (int autolist = 0; autolist != sgCN; autolist++) {
 		randGetWeapList();
-		Sleep(300);
 	}
 
 	//Make Sure
 	Sleep(100);
 OutputResult:
 	randGetWeapList();
+
+	ColorRefresh();
 
 	if (fastopen == false) {
 		Sleep(300);
@@ -290,27 +322,8 @@ OutputResult:
 		
 	}
 
-	if (openapi_gtLv == "s") {
-		system("color 67");
-	}
-	if (openapi_gtLv == "a") {
-		system("color 47");
-	}
-	if (openapi_gtLv == "b") {
-		system("color c7");
-	}
-	if (openapi_gtLv == "c") {
-		system("color d7");
-	}
-	if (openapi_gtLv == "d") {
-		system("color 17");
-	}
-	if (openapi_gtLv == "e") {
-		system("color 97");
-	}
-	if (openapi_gtLv == "f") {
-		system("color f0");
-	}
+	system("color F7 ");
+	Sleep(150);
 
 	_fileapi_write(_$GetSelfPath + "/Case.log", "-------------------------------------------------------------");
 	_fileapi_write(_$GetSelfPath + "/Case.log", "新物品    :   " + cweap + " " + statTrackID + " " + openapi_gwname);
@@ -320,13 +333,17 @@ OutputResult:
 
 	_fileapi_write(_$GetSelfPath + "/Total.log", casename + "  - " + cweap + " " + statTrackID + " " + openapi_gwname);
 
+	ColorRefresh();
+	_prtoutmsg("-------------------------------------------------------------");
 	_prtoutmsg("新物品    :   " + cweap + " " + statTrackID + " " + openapi_gwname);
+	Sleep(200);
 	_prtoutmsg("模板      :    " + to_string(openapi_skinborad));
 	_prtoutmsg("磨损度    :    " +  openapi_abr_tag + " ( " + openapi_abr_full + ")");
 	_prtendl();
 	_prtoutmsg("生成种子 :  " + to_string(cs_randseed));
 	_prtoutmsg("库存已经记录到了 Total.log");
 	_prtoutmsg("开箱记录已保存到 Case.log");
+	_prtoutmsg("-------------------------------------------------------------");
 	_prtendl();
 	_prtoutmsg("按Enter返回上一界面");
 	_pause();
