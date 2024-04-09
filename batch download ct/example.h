@@ -93,6 +93,7 @@ int _HeadMainLoad() {
 	
 	buildbdsproj(path_select);
 
+	wtoutf--;
 	_write_sipcfg(outfile, "TotalSize", to_string(wtoutf));
 
 
