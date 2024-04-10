@@ -48,7 +48,7 @@ string buildbdsproj(string dir) {
 		else {
 			string file_path = dir + "\\" + fileinfo.name;
 			//cout << file_path.c_str() << endl;
-			_write_sipcfg(outfile, to_string(wtoutf), file_path);
+			_fileapi_write(outfile,file_path);
 			_prtoutmsg("_Find File :  " + file_path);
 			wtoutf++;
 		}
@@ -89,12 +89,19 @@ int _HeadMainLoad() {
 	_write_sipcfg(outfile, "auther", "(- v -)");
 	_write_sipcfg(outfile, "root", "(Write URL Here)");
 
+	_write_sipcfg(outfile, "TotalSize", "-1");
+
+	_write_sipcfg(outfile, "startdownload", "go");
 	//Start output
 	
 	buildbdsproj(path_select);
 
 	wtoutf--;
+	_prtendl();
+	_prtendl();
+	_prtoutmsg("Compositing file..     Please wait");
 	_write_sipcfg(outfile, "TotalSize", to_string(wtoutf));
+	_prtendl();
 
 
 	_prtendl();
