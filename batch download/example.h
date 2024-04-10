@@ -97,7 +97,7 @@ string did_str;
 
 string dlbuffer;
 
-int bds_total_succ, bds_total_fail;
+int bds_total_succ, bds_total_fail,bds_startDown;
 
 string url_bds;
 
@@ -142,14 +142,20 @@ int _HeadMainLoad() {
 
 		bds_total_fail = bds_total_succ = 0;
 
+		bds_startDown = FindCharLine(1, DScript, "$startdownload=go;");
+
 		for (int downid = 1; true; downid++) {
 			if (downid > totalsize_i)break;
+			bds_startDown++;
 			did_str = to_string(downid);
 
-			dlbuffer = _load_sipcfg(DScript, to_string(downid));
+			dlbuffer = _fileapi_textread(DScript, bds_startDown);
+
+			if (dlbuffer == "overline")break;
 
 			_prtoutmsg("_downloading  [" + did_str + "/" + totalsize + "] URL :  " + bds_rootsrv + dlbuffer);
 			creatpath(DSPath + "/" + dlbuffer);
+			if (check_file_existence(DSPath + "/" + dlbuffer))continue;
 			if (!_urldown_api_nocache(bds_rootsrv + dlbuffer, DSPath + "/" + dlbuffer)) {
 				_prtoutmsg("Failed Download  =  [" + did_str + " / " + totalsize + "] URL :  " + bds_rootsrv + dlbuffer);
 				bds_total_fail++;
