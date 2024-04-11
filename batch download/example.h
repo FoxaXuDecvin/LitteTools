@@ -97,7 +97,7 @@ string did_str;
 
 string dlbuffer;
 
-int bds_total_succ, bds_total_fail,bds_startDown;
+int bds_total_succ, bds_total_fail,bds_total_skip,bds_startDown;
 
 string url_bds;
 
@@ -140,7 +140,7 @@ int _HeadMainLoad() {
 		_prtoutmsg("Start Download File");
 		_prtendl();
 
-		bds_total_fail = bds_total_succ = 0;
+		bds_total_fail = bds_total_succ = bds_total_skip = 0;
 
 		bds_startDown = FindCharLine(1, DScript, "$startdownload=go;");
 
@@ -155,7 +155,10 @@ int _HeadMainLoad() {
 
 			_prtoutmsg("_downloading  [" + did_str + "/" + totalsize + "] URL :  " + bds_rootsrv + dlbuffer);
 			creatpath(DSPath + "/" + dlbuffer);
-			if (check_file_existence(DSPath + "/" + dlbuffer))continue;
+			if (check_file_existence(DSPath + "/" + dlbuffer)) {
+				bds_total_skip++;
+				continue;
+			}
 			if (!_urldown_api_nocache(bds_rootsrv + dlbuffer, DSPath + "/" + dlbuffer)) {
 				_prtoutmsg("Failed Download  =  [" + did_str + " / " + totalsize + "] URL :  " + bds_rootsrv + dlbuffer);
 				bds_total_fail++;
@@ -170,7 +173,7 @@ int _HeadMainLoad() {
 		_prtendl();
 		_prtoutmsg("Complete Download");
 		_prtoutmsg("Total " + totalsize);
-		_prtoutmsg("Download -  Succeed :  " + to_string(bds_total_succ) + "  Failed :  " + to_string(bds_total_fail));
+		_prtoutmsg("Download -  Succeed :  " + to_string(bds_total_succ) + "  Failed :  " + to_string(bds_total_fail) + "  Skip :  " + to_string(bds_total_skip));
 		_prtoutmsg("process exit");
 		_fileapi_del(url_bds);
 		return 0;
