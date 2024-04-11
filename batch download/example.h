@@ -101,6 +101,8 @@ int bds_total_succ, bds_total_fail,bds_total_skip,bds_startDown;
 
 string url_bds;
 
+string craftURL,craftAddres;
+
 //Put Code Here
 int _HeadMainLoad() {
 	url_bds = _get_random_s(1,1000000) + "~temp.bds";
@@ -153,14 +155,17 @@ int _HeadMainLoad() {
 
 			if (dlbuffer == "overline")break;
 
-			_prtoutmsg("_downloading  [" + did_str + "/" + totalsize + "] URL :  " + bds_rootsrv + dlbuffer);
-			creatpath(DSPath + "/" + dlbuffer);
-			if (check_file_existence(DSPath + "/" + dlbuffer)) {
+			craftURL = bds_rootsrv + dlbuffer;
+			craftAddres = DSPath + "/" + dlbuffer;
+
+			_prtoutmsg("_downloading  [" + did_str + "/" + totalsize + "] URL :  " + craftURL);
+			creatpath(craftAddres);
+			if (check_file_existence(craftAddres)) {
 				bds_total_skip++;
 				continue;
 			}
-			if (!_urldown_api_nocache(bds_rootsrv + dlbuffer, DSPath + "/" + dlbuffer)) {
-				_prtoutmsg("Failed Download  =  [" + did_str + " / " + totalsize + "] URL :  " + bds_rootsrv + dlbuffer);
+			if (!_urldown_api_nocache(craftURL, craftAddres)) {
+				_prtoutmsg("Failed Download  =  [" + did_str + " / " + totalsize + "] URL :  " + craftURL);
 				bds_total_fail++;
 				continue;
 			}
