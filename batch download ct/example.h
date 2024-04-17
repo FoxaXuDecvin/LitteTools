@@ -48,7 +48,7 @@ string buildbdsproj(string dir) {
 		else {
 			string file_path = dir + "\\" + fileinfo.name;
 			//cout << file_path.c_str() << endl;
-			_fileapi_write(outfile,file_path);
+			_fileapi_write(outfile,ReplaceChar(file_path,"\\","/"));
 			_prtoutmsg("_Find File :  " + file_path);
 			wtoutf++;
 		}
