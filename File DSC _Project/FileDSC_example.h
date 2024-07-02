@@ -1,6 +1,7 @@
 #pragma once
 
 #include"../shload.h"
+#include"../Code/_sdk_URLCodec.h"
 
 //Create EmptyPath
 // -4 == Not Found
@@ -30,8 +31,6 @@ int FindCharLineA(int startline, string file, string charData) {
 		startline++;
 	}
 }
-
-bool cp_true = false;
 
 bool creatpath(string fileaddress) {
 	string tempdata, outdata;
@@ -74,6 +73,8 @@ bool PreLaunchLoad(void) {
 	return true;
 }
 
+bool useDebug = true;
+bool NoErrorType = false;
 //Args API
 void argsApi(string args$api) {
 
@@ -84,6 +85,16 @@ void argsApi(string args$api) {
 		_sync_mode = true;
 		return;
 	}
+	if (args$api == "-nodebug") {
+		useDebug = false;
+		return;
+	}
+	if (args$api == "-noerror") {
+		NoErrorType = true;
+		__settings_throwErrorMode = false;
+		return;
+	}
+
 
 	if (argsSign == 1) {
 		argsSign++;
@@ -127,14 +138,14 @@ void argsApi(string args$api) {
 
 //Put Code Here
 int _HeadMainLoad() {
-	url_bds = "LatestSync.bds";
+	url_bds = _$GetSelfPath + "/LatestSync.bds";
 	if (argsSign == 4) {
 		_pn();
-		_prtoutmsg("File Download and Sync (ÓÉBatchDownloadScriptÏîÄ¿ĞŞ¸ÄÖÆ×÷)");
-		_prtoutmsg("ĞèÒªÍ¬²½µÄÅäÖÃÎÄ¼ş :  " + DScript);
-		_prtoutmsg("ĞèÒªÍ¬²½µÄÄ¿Â¼ :  " + DSPath);
+		_prtoutmsg("File Download and Sync (ç”±Batch Downloadé¡¹ç›®ä¿®æ”¹åˆ¶ä½œ)");
+		_prtoutmsg("éœ€è¦åŒæ­¥çš„é…ç½®æ–‡ä»¶ :  " + DScript);
+		_prtoutmsg("éœ€è¦åŒæ­¥çš„ç›®å½• :  " + DSPath);
 		_prtendl();
-		_prtoutmsg("ÕıÔÚÁ¬½Óµ½·şÎñÆ÷...        ÇëÉÔµÈ");
+		_prtoutmsg("æ­£åœ¨è·å–åŒæ­¥ä¿¡æ¯...        è¯·ç¨ç­‰");
 
 		//Load Script Data;
 		if (check_file_existence("outdate_bdsfile.txt")) {
@@ -147,7 +158,7 @@ int _HeadMainLoad() {
 				_fileapi_CpFile(url_bds, "outdate_bdsfile.txt");
 			}
 			if (!_urldown_api_nocache(DScript, url_bds)) {
-				_prtoutmsg("ÎŞ·¨´ÓÒÔÏÂÍøÖ·»ñÈ¡µ½Åú´¦ÀíÎÄ¼ş :   " + DScript);
+				_prtoutmsg("æ— æ³•ä»ä»¥ä¸‹ç½‘å€è·å–åˆ°æ‰¹å¤„ç†æ–‡ä»¶ :   " + DScript);
 				return 0;
 			}
 			DScript = url_bds;
@@ -159,42 +170,44 @@ int _HeadMainLoad() {
 
 		if (_sync_mode == true) {
 			if (!check_file_existence("outdate_bdsfile.txt")) {
-				_p("ÔÚµ±Ç°Ä¿Â¼ÏÂÉĞÎ´ÕÒµ½Ä©´ÎÍ¬²½ĞÅÏ¢£¬Èç¹ûÄãÊÇ³õ´ÎÍ¬²½ÇëºöÂÔÕâÌõĞÅÏ¢£¬Çë²»ÒªËæÒâÉ¾³ıÈÎºÎÄ¿Â¼ÏÂµÄ bdsÎÄ¼ş");
+				_p("åœ¨å½“å‰ç›®å½•ä¸‹å°šæœªæ‰¾åˆ°æœ«æ¬¡åŒæ­¥ä¿¡æ¯ï¼Œå¦‚æœä½ æ˜¯åˆæ¬¡åŒæ­¥è¯·å¿½ç•¥è¿™æ¡ä¿¡æ¯ï¼Œè¯·ä¸è¦éšæ„åˆ é™¤ä»»ä½•ç›®å½•ä¸‹çš„ bdsæ–‡ä»¶");
 				goto SkipCheckDelete;
 			}
 			_pn();
-			_p("ÕıÔÚ²éÕÒĞèÒª±»É¾³ıµÄÎÄ¼ş");
+			_p("æ­£åœ¨æŸ¥æ‰¾éœ€è¦è¢«åˆ é™¤çš„æ–‡ä»¶");
 			pitA = FindCharLine(1, DScript, "$startdownload=go;");
 			pitB = FindCharLine(1, "outdate_bdsfile.txt", "$startdownload=go;");
 
-			_soildwrite_write("ÒÑ±»É¾³ıµÄÎÄ¼ş");
+			_soildwrite_write("å·²è¢«åˆ é™¤çš„æ–‡ä»¶");
 			while (true) {
-				_p("ÕıÔÚËÑË÷µÚ " + to_string(pitB) + " ¸öÎÄ¼ş");
+				if (useDebug == true) {
+					_p("æ­£åœ¨æœç´¢ç¬¬ " + to_string(pitB) + " ä¸ªæ–‡ä»¶");
+				}
 				tempcacheN = LineReader("outdate_bdsfile.txt", pitB);
 				if (tempcacheN == "overline") {
 					break;
 				}
 				if (tempcacheN == "ReadFailed") {
-					_p("ÎÄ¼şËğ»µ£¬ÎŞ·¨ÅĞ¶ÏÎÄ¼şĞŞ¸ÄÇé¿ö");
+					_p("æ–‡ä»¶æŸåï¼Œæ— æ³•åˆ¤æ–­æ–‡ä»¶ä¿®æ”¹æƒ…å†µ");
 					break;
 				}
 				if (FindCharLineA(pitA, DScript, tempcacheN) == -4) {
 					_fileapi_del(DSPath + "/" + tempcacheN);
-					_soildwrite_write("ÒÑÉ¾³ı :  " + tempcacheN);
-					_p("ÕıÔÚ´¦Àí :  " + tempcacheN);
+					_soildwrite_write("å·²åˆ é™¤ :  " + tempcacheN);
+					_p("æ­£åœ¨å¤„ç† :  " + tempcacheN);
 					pitB++;
 				}
 				else {
 					pitA++;
 					pitB++;
 				}
-				
+
 			}
-			_p("ÕıÔÚÍ¬²½ĞÂµÄÎÄ¼ş");
+			_p("æ­£åœ¨åŒæ­¥æ–°çš„æ–‡ä»¶");
 			_fileapi_del("outdate_bdsfile.txt");
 		}
 
-		SkipCheckDelete:
+	SkipCheckDelete:
 
 		taskname = _load_sipcfg(DScript, "TaskName");
 		Devlop = _load_sipcfg(DScript, "Credits");
@@ -211,21 +224,28 @@ int _HeadMainLoad() {
 		//Output
 		_prtendl();
 
-		_prtoutmsg("ÈÎÎñÃû³Æ :   " + taskname);
-		_prtoutmsg("ÅäÖÃÎÄ¼ş´´½¨Õß :   " + Devlop);
-		_prtoutmsg("×ÜÎÄ¼şÊıÁ¿ :   " + totalsize);
+		_prtoutmsg("ä»»åŠ¡åç§° :   " + taskname);
+		_prtoutmsg("é…ç½®æ–‡ä»¶åˆ›å»ºè€… :   " + Devlop);
+		_prtoutmsg("æ€»æ–‡ä»¶æ•°é‡ :   " + totalsize);
 
 		_prtendl();
 		_prtendl();
-		_prtoutmsg("¿ªÊ¼ÏÂÔØÎÄ¼ş");
+		_prtoutmsg("å¼€å§‹ä¸‹è½½æ–‡ä»¶");
 		_prtendl();
 
 		bds_total_fail = bds_total_succ = bds_total_skip = 0;
 
-		bds_startDown = FindCharLine(1, DScript, "$startdownload=go;");
+		bds_startDown = FindCharLine(1, DScript, "$startdownload=go");
+		if (bds_startDown == -4) {
+			_p("BDSæ–‡ä»¶æŸåï¼Œæ— æ³•åœ¨ " + DScript + " ä¸­æ‰¾åˆ°æ ‡è¯†ç¬¦  $startdownload=go");
+			_pause();
+			return 0;
+		}
 
 		_soildwrite_write("");
-		_soildwrite_write("»ñÈ¡µ½µÄĞÂÎÄ¼ş");
+		_soildwrite_write("è·å–åˆ°çš„æ–°æ–‡ä»¶");
+
+		_fileapi_createmark("Fail.log", "è·å–å¤±è´¥çš„æ–‡ä»¶");
 
 		for (int downid = 1; true; downid++) {
 			if (downid > totalsize_i)break;
@@ -237,19 +257,25 @@ int _HeadMainLoad() {
 			if (dlbuffer == "overline")break;
 
 			craftURL = bds_rootsrv + dlbuffer;
+			craftURL = UTF8Url::Encode(craftURL);
 			craftAddres = DSPath + "/" + dlbuffer;
 
 			creatpath(craftAddres);
 			if (check_file_existence(craftAddres)) {
-				_prtoutmsg("_Ìø¹ı(ÒÑ´æÔÚ)  [µÚ" + did_str + "¸öÎÄ¼ş/×Ü¹²" + totalsize + "¸öÎÄ¼ş] URLµØÖ· :  " + craftURL);
+				if (useDebug == true) {
+					_prtoutmsg("_è·³è¿‡(å·²å­˜åœ¨)  [ç¬¬" + did_str + "ä¸ªæ–‡ä»¶/æ€»å…±" + totalsize + "ä¸ªæ–‡ä»¶] URLåœ°å€ :  " + craftURL);
+				}
 				bds_total_skip++;
 				continue;
-			}			
-			else {
-				_prtoutmsg("_ÕıÔÚÏÂÔØ  [µÚ" + did_str + "¸öÎÄ¼ş/×Ü¹²" + totalsize + "¸öÎÄ¼ş] URLµØÖ· :  " + craftURL);
 			}
-			if (!_urldown_api_nocache(craftURL, craftAddres)) {
-				_prtoutmsg("ÎŞ·¨Íê³ÉÏÂÔØ  =  [µÚ" + did_str + "¸öÎÄ¼ş / ×Ü¹²" + totalsize + "¸öÎÄ¼ş] URLµØÖ· :  " + craftURL);
+			else {
+				_prtoutmsg("_æ­£åœ¨ä¸‹è½½  [ç¬¬" + did_str + "ä¸ªæ–‡ä»¶/æ€»å…±" + totalsize + "ä¸ªæ–‡ä»¶] URLåœ°å€ :  " + craftURL);
+			}
+			if (!_urldown_api_vc_nocache(craftURL, craftAddres)) {
+				if (NoErrorType == false) {
+					_prtoutmsg("æ— æ³•å®Œæˆä¸‹è½½  =  [ç¬¬" + did_str + "ä¸ªæ–‡ä»¶ / æ€»å…±" + totalsize + "ä¸ªæ–‡ä»¶] URLåœ°å€ :  " + craftURL);
+				}
+				_fileapi_write("Fail.log", craftURL);
 				bds_total_fail++;
 				continue;
 			}
@@ -263,28 +289,29 @@ int _HeadMainLoad() {
 
 		_prtendl();
 		_prtendl();
-		_prtoutmsg("³É¹¦µÄÍê³ÉÁËÏÂÔØ");
-		_prtoutmsg("×Ü¹² " + totalsize+"¸öÎÄ¼ş");
-		_prtoutmsg("ÏêÏ¸ĞÅÏ¢ -  ÏÂÔØ³É¹¦ÊıÁ¿ :  " + to_string(bds_total_succ) + "  ÏÂÔØÊ§°ÜÊıÁ¿ :  " + to_string(bds_total_fail) + "  Ìø¹ıµÄÎÄ¼şÊıÁ¿ :  " + to_string(bds_total_skip));
-		_prtoutmsg("³ÌĞòÍË³ö");
+		_prtoutmsg("æˆåŠŸçš„å®Œæˆäº†ä¸‹è½½");
+		_prtoutmsg("æ€»å…± " + totalsize + "ä¸ªæ–‡ä»¶");
+		_prtoutmsg("è¯¦ç»†ä¿¡æ¯ -  ä¸‹è½½æˆåŠŸæ•°é‡ :  " + to_string(bds_total_succ) + "  ä¸‹è½½å¤±è´¥æ•°é‡ :  " + to_string(bds_total_fail) + "  è·³è¿‡çš„æ–‡ä»¶æ•°é‡ :  " + to_string(bds_total_skip));
+		_prtoutmsg("ç¨‹åºé€€å‡º");
 		_pause();
 		_str_system("start Modify.log");
 		return 0;
 	}
 	else {
 		_prtendl();
-		_prtoutmsg("Batch Download Script");
+		_prtoutmsg("File Download and Sync");
 		_prtendl();
 		_prtoutmsg("---------------------------------------------------");
-		_p("´ËÏîÄ¿»ùÓÚBatchDownloadScriptĞŞ¸Ä¶øÀ´");
+		_p("æ­¤é¡¹ç›®åŸºäºBatch Download ä¿®æ”¹è€Œæ¥");
 		_prtoutmsg("Based on OpenCLT ...   " + $codename + "(" + $version_msg + ")  " + $version_code_str);
 		_prtoutmsg("Copyright FoxaXu  " + $year_message);
 		_prtoutmsg("Command : ");
-		_prtoutmsg("                        [BDS] <-local/-url> <%rollscript%> <path> </-sync>");
+		_prtoutmsg("                        [BDS] <-local/-url> <%rollscript%> <path> </-sync> </-nodebug>");
 		_prtoutmsg("Example : ");
 		_prtoutmsg("                        [BDS] -local \"autodown.bds\" D:\\Example");
 		_prtoutmsg("                        [BDS] -url \"https://www.foxaxu.com/example.bds\" D:\\Example");
 		_prtoutmsg("                        [BDS] -url \"https://www.foxaxu.com/example.bds\" D:\\Example -sync");
+		_prtoutmsg("                        [BDS] -url \"https://www.foxaxu.com/example.bds\" D:\\Example -sync -nodebug");
 		_prtoutmsg("---------------------------------------------------");
 		_prtoutmsg($version_msg);
 		_pause();
